@@ -1,0 +1,21 @@
+button {
+  &.button {
+    outline: none;
+    border: none;
+    color: #fff;
+    background: #205520;
+    padding: 8px 10px;
+    border-radius: 5px;
+    max-width: 200px;
+    min-width: 100px;
+    cursor: pointer;
+
+    &.button-success {
+      background: #309930;
+    }
+
+    &.button-danger {
+      background: #aa1616;
+    }
+  }
+}

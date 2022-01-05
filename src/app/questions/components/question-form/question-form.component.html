@@ -1,0 +1,40 @@
+<section class="question-section">
+  <h1 class="question-section__title">{{title}}</h1>
+  <a routerLink="/manage">
+    Back to the manage questions page
+  </a>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="question-section__form">
+    <fieldset>
+      <div class="question-section__form-title">
+        <label for="question-title" class="question-section__control-title">Title:</label>
+        <input formControlName="title"
+               type="text"
+               id="question-title"
+               placeholder="Enter question title ...">
+        <app-form-control-error [control]="form.controls.title"></app-form-control-error>
+      </div>
+
+      <hr>
+
+      <div class="question-section__form-options">
+        <span class="question-section__control-title">Question type:</span>
+        <div *ngFor="let option of questionTypeOptions; trackBy: trackBy">
+          <input type="radio" [id]="option.value + '-input'"
+                 formControlName="type"
+                 [value]="option.value">
+          <label [for]="option.value + '-input'">{{ option.label }}</label>
+        </div>
+      </div>
+
+      <app-form-control-error [control]="form.controls.type"></app-form-control-error>
+
+      <app-option-form *ngIf="enableQuestionOptions"
+                       (optionsChange)="onQuestionOptionsChange($event)">
+      </app-option-form>
+
+      <button class="button button-success" type="submit">{{title}}</button>
+    </fieldset>
+  </form>
+
+</section>

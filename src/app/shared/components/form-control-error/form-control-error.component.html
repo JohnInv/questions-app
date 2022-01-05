@@ -1,0 +1,17 @@
+<div *ngIf="(errors$ | async) as errors" class="error">
+  <div *ngFor="let error of errors trackBy: trackByErrors">
+    <div [ngSwitch]="error.type">
+
+      <div *ngSwitchCase="'required'">
+        <span class="error__message">*This field is required</span>
+      </div>
+
+      <div *ngSwitchCase="'maxlength'">
+        <span class="error__message">
+          Max allowed length is: {{error.params.requiredLength}}. Actual length: {{error.params.actualLength}}
+        </span>
+      </div>
+
+    </div>
+  </div>
+</div>

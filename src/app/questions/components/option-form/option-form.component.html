@@ -1,0 +1,18 @@
+<div class="options-form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input class="options-form__input" type="text" placeholder="Option text" formControlName="text">
+    <button type="submit" class="button button-success">Add</button>
+    <br>
+
+    <app-form-control-error [control]="form.controls.text"></app-form-control-error>
+  </form>
+
+  <div *ngIf="options?.length" class="options-form__options">
+    <h5>Question options: </h5>
+    <div *ngFor="let option of options; trackBy: trackByOptions"
+         class="options-form__option">
+      <span>{{option.label}}</span>
+      <span class="close" (click)="removeOption(option)">&#10006;</span>
+    </div>
+  </div>
+</div>

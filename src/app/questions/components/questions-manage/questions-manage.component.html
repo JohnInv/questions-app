@@ -1,0 +1,26 @@
+<section class="questions">
+  <h1>Manage questions</h1>
+
+  <div>
+    <a routerLink="/create">Create new question</a>
+  </div>
+
+  <div class="questions__container">
+    <ng-container *ngIf="questions.length; else noQuestions">
+      <div *ngFor="let question of questions; trackBy: trackQuestions" class="questions__container-question">
+        <p>Title: {{ question.title }}</p>
+        <p>Created at: {{ question.createdAt | date: 'MMMM d, h:mm a' }}</p>
+        <p>Type: {{ question.type | questionType }}</p>
+
+        <div class="questions__container-actions">
+          <button class="button button-danger" (click)="onDelete(question.uuid)">Delete</button>
+          <a [routerLink]="['/edit', question.uuid]">Edit</a>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noQuestions>
+      <h3>No questions were found</h3>
+    </ng-template>
+  </div>
+</section>

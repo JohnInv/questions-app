@@ -1,0 +1,36 @@
+.question-section {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+
+  &__title {
+    margin: 0;
+  }
+
+  &__form {
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 20px;
+      border-radius: 5px;
+      padding: 15px 10px;
+    }
+  }
+
+  &__form-title {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+  }
+
+  &__form-options {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 5px;
+  }
+
+  &__control-title {
+    display: block;
+    width: 100%;
+  }
+}

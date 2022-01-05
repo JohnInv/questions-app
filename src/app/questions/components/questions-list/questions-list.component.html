@@ -1,0 +1,49 @@
+<section class="questions">
+  <h1 class="questions__title">Questions list</h1>
+
+  <div class="questions__list">
+    <div class="questions__list-block">
+      <h2 class="questions__list-subtitle">Unanswered questions</h2>
+
+      <div class="questions__list-wrapper" *ngIf="unansweredQuestions.length; else noUnanswered">
+        <div class="questions__list-card"
+             *ngFor="let question of unansweredQuestions; trackBy: trackByQuestions">
+          <div>
+            <span class="questions__list-card-title">
+              Title: {{question.title}}
+            </span>
+          </div>
+          <question-answer-form (answer)="onQuestionAnswerChange()"
+                                [question]="question">
+          </question-answer-form>
+        </div>
+      </div>
+
+      <ng-template #noUnanswered>
+        <h3 class="no-questions-placeholder">No unanswered questions were found</h3>
+      </ng-template>
+    </div>
+
+    <div class="questions__list-block">
+      <h2 class="questions__list-subtitle">Answered questions</h2>
+
+      <div class="questions__list-wrapper" *ngIf="answeredQuestions.length; else noAnswered">
+        <div class="questions__list-card"
+             *ngFor="let question of answeredQuestions; trackBy: trackByQuestions">
+          <div>
+            <span class="question__list-card-title">{{question.title}}</span>
+          </div>
+          <div>Answer: {{question.answer}}</div>
+          <button class="button button-danger" (click)="removeAnswer(question)">
+            Clear answer &#10006;
+          </button>
+        </div>
+      </div>
+
+      <ng-template #noAnswered>
+        <h3 class="no-questions-placeholder">No answered questions were found</h3>
+      </ng-template>
+    </div>
+  </div>
+
+</section>

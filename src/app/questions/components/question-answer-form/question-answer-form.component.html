@@ -1,0 +1,35 @@
+<section class="question-answer">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ng-container [ngSwitch]="question.type">
+      <div *ngSwitchCase="questionType.singleChoice">
+        <div *ngFor="let option of options; trackBy: trackByOptions">
+          <input type="radio"
+                 formControlName="answer"
+                 [id]="option.value + '-option-single'"
+                 [value]="option.value">
+          <label [for]="option.value + '-option-single'">{{option.label}}</label>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="questionType.multipleChoice">
+        <div *ngFor="let option of options; trackBy: trackByOptions">
+          <input type="checkbox"
+                 formControlName="answer"
+                 (change)="onCheckboxChange(option)"
+                 [id]="option.value + '-option-multi'"
+                 [value]="option.value">
+          <label [for]="option.value + '-option-multi'">{{option.label}}</label>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="questionType.open">
+        <textarea placeholder="You answer" formControlName="answer"></textarea>
+      </div>
+    </ng-container>
+
+    <app-form-control-error [control]="form.controls.answer">
+    </app-form-control-error>
+
+    <button class="button button-success" *ngIf="form.valid" type="submit">Save answer</button>
+  </form>
+</section>

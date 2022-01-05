@@ -1,0 +1,15 @@
+.question-answer {
+  textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  input[type='radio'] {
+    margin-top: 5px;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+}

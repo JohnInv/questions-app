@@ -1,0 +1,15 @@
+.routes-container {
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  grid-gap: 25px;
+
+  li {
+    a {
+      text-decoration: none;
+      color: #141484;
+    }
+  }
+}

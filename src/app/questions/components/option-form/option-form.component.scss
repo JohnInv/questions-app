@@ -1,0 +1,29 @@
+.options-form {
+  form {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__input {
+    height: 36px;
+    margin-right: 20px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+  }
+
+  &__option {
+    display: flex;
+    grid-gap: 5px;
+
+    &.close {
+      cursor: pointer;
+      color: #aa2525;
+    }
+  }
+}
